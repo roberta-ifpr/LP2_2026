@@ -4,6 +4,7 @@ public class Pessoa {
     private String nome;
     private String email;
     private String cpf;
+    //atributo de associação
     private Endereco endereco;
 
     public Pessoa() {
