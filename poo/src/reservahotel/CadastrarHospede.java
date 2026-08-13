@@ -1,10 +1,11 @@
 package reservahotel;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ public class CadastrarHospede extends JFrame{
     private JButton btnCadastro;
     private JPanel painelPrincipal;
     private JPanel painelCadastro;
+    private JPanel painelTopo;
 
     public CadastrarHospede(){
         //inicilizar Janela
@@ -30,9 +32,15 @@ public class CadastrarHospede extends JFrame{
         painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new BorderLayout(10,10));
 
+        painelTopo = new JPanel();
+        painelTopo.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+
         //area de cadastro
         painelCadastro = new JPanel();
         painelCadastro.setLayout(new GridLayout(3, 2,10,10));
+
+        painelCadastro.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
 
         jlNome = new JLabel("Nome");
         txtNome = new JTextField();
@@ -46,14 +54,14 @@ public class CadastrarHospede extends JFrame{
         painelCadastro.add(txtEmail);
         painelCadastro.add(btnCadastro);
 
-        painelPrincipal.add(painelCadastro);
+        painelTopo.add(painelCadastro);
+        painelPrincipal.add(painelTopo,BorderLayout.NORTH);
 
         //adicionando no JFrame
         add(painelPrincipal);
 
         //adiciona evento ao botao
         btnCadastro.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 cadastrar();
@@ -61,17 +69,20 @@ public class CadastrarHospede extends JFrame{
             
         });
 
-
-
         setVisible(true);
     }
-
     
     public void cadastrar(){
         Hospede hospede = new Hospede();
         hospede.setNome(txtNome.getText());
         hospede.setEmail(txtEmail.getText());
-        
+
+        limparTela();
+    }
+
+    public void limparTela(){
+        txtNome.setText("");
+        txtEmail.setText("");
     }
 
 
