@@ -1,6 +1,6 @@
 package testeCursos;
 
-import gerenciamentoCursos.*;
+import gerenciamentocursos.*;
 import java.util.Scanner;
 
 public class TestaCursos {

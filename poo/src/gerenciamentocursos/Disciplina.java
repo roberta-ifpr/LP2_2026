@@ -1,4 +1,4 @@
-package gerenciamentoCursos;
+package gerenciamentocursos;
 
 public class Disciplina {
     private String nome;

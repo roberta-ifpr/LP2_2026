@@ -1,4 +1,4 @@
-package gerenciamentoCursos;
+package gerenciamentocursos;
 
 public class Matricula {
     private Aluno aluno;

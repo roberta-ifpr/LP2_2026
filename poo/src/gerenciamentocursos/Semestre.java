@@ -1,4 +1,4 @@
-package gerenciamentoCursos;
+package gerenciamentocursos;
 
 import java.util.List;
 
