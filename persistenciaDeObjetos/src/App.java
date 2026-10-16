@@ -1,16 +1,55 @@
 import csv.ArquivoProdutoCSV;
+import java.util.ArrayList;
+import java.util.Scanner;
 import modelo.Produto;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Produto p = new Produto(1, "Mouse", 25);
-        Produto p1 = new Produto(2,"Teclado", 100);
-
+        Scanner teclado = new Scanner(System.in);
         ArquivoProdutoCSV arquivo = new ArquivoProdutoCSV();
+        int op;
+        
+        do { 
+            
+            System.out.println("Escolha a Opção:");
+            System.out.println("1 - Cadastrar Produto");
+            System.out.println("2 - Listar Produto");
+            System.out.println("3 - Alterar Produto");
+            System.out.println("4 - Deletar Produto");
+            System.out.println("5 - Sair");
+            System.out.print("Opção: ");
+            op = teclado.nextInt();
+            switch (op) {
+                case 1:
+                    Produto produto = new Produto();
+                    System.out.println("Cadastrar Produto");
+                    System.out.print("Id: ");
+                    produto.setId(teclado.nextInt());
+                    System.out.print("Nome: ");
+                    produto.setNome(teclado.nextLine());
+                    System.out.print("Preço: ");
+                    produto.setPreco(teclado.nextDouble());
+                    arquivo.inserir(produto);
+                    break;
+                case 2:
+                    ArrayList<Produto> produtos = arquivo.listar();
+                    System.out.println("====================");
+                        System.out.println("Listagem de Produtos");
+                        System.out.println("====================");
+                    for (Produto prod : produtos) {
+                        
+                        System.out.println(prod.getId()+"    "+prod.getNome()+"    R$"+prod.getPreco());
+                        System.out.println("---------------------");
+                    }
+                    teclado.nextLine();
+                    teclado.nextLine();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            
+        } while (op!=5);
 
-        System.out.println("Brincando com CSV");
-       // System.out.println(p.getId()+","+p.getNome()+","+p.getPreco());
-       arquivo.inserir(p);
-       arquivo.inserir(p1);
+        
     }
 }
