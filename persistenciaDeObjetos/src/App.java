@@ -46,6 +46,18 @@ public class App {
                     teclado.nextLine();
                     teclado.nextLine();
                     break;
+                case 4:
+                    System.out.println("====================");
+                    System.out.println("   Deletar Produto  ");
+                    System.out.println("===================="); 
+                    System.out.print("Informe ID do produto a ser deletado: ");
+                    int id = teclado.nextInt();
+                    if(arquivo.deletar(id)){
+                        System.out.println("Produto deletado com sucesso");
+                    }else{
+                        System.out.println("Produto não encontrado ou erro ao salvar");
+                    }
+
                 default:
                     throw new AssertionError();
             }

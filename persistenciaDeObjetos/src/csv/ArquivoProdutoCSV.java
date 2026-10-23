@@ -55,4 +55,32 @@ public class ArquivoProdutoCSV {
        return produtos;
     }
 
+    public boolean deletar(int id){
+        ArrayList<Produto> produtos = listar();
+        for (Produto produto : produtos) {
+            if(produto.getId() == id){
+                produtos.remove(produto);
+                return salvar(produtos);
+            }    
+        }
+        return false;
+    }
+
+    public boolean salvar(ArrayList<Produto> produtos){
+        try {
+            FileWriter arquivo = new FileWriter(nomeArquivo);//false cria o arquivo vazio
+            PrintWriter escritor = new PrintWriter(arquivo);
+            for (Produto produto : produtos) {
+                escritor.println(produto.getId()+","+produto.getNome()+","+produto.getPreco());    
+            } 
+            escritor.close();
+            return true;
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao acessar arquivo "+e.getMessage());
+            return false;
+        }
+    }
+
 }
