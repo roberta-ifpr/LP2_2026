@@ -24,8 +24,10 @@ public class App {
                     Produto produto = new Produto();
                     System.out.println("Cadastrar Produto");
                     System.out.print("Id: ");
+                    teclado.nextLine();
                     produto.setId(teclado.nextInt());
                     System.out.print("Nome: ");
+                    teclado.nextLine();
                     produto.setNome(teclado.nextLine());
                     System.out.print("Preço: ");
                     produto.setPreco(teclado.nextDouble());
